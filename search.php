@@ -16,7 +16,7 @@ if (!$music) {
   die("Query failed: " . $conn->error);
 }
 ?>
- 
+
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -24,8 +24,7 @@ if (!$music) {
     <nav>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-        <li class="breadcrumb-item">Search</li>
-        <li class="breadcrumb-item active">Results</li>
+        <li class="breadcrumb-item active">Search Results</li>
       </ol>
     </nav>
   </div><!-- End Page Title -->
@@ -38,7 +37,7 @@ if (!$music) {
           <div class="card-body">
             <div class="d-flex justify-content-between">
               <div>
-                <h5 class="card-title">Search Results for "<?php echo htmlspecialchars($search); ?>":</h5>
+              <h5 class="card-title">Search Results for "<?php echo htmlspecialchars($search); ?>"</h5>
               </div>
               <div>
                 <button class="btn btn-primary btn-sm mt-4 mx-3" data-bs-toggle="modal" data-bs-target="#addMusicModal">Add Music</button>
@@ -112,7 +111,7 @@ if (!$music) {
                       <div class="modal-dialog">
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h5 class="modal-title" id="viewMusicModalLabel<?php echo $row['id']; ?>">View Music</h5>
+                            <h5 class="modal-title" id="viewMusicModalLabel<?php echo $row['id']; ?>">Music Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
                           <div class="modal-body">
