@@ -3,22 +3,19 @@
   include('partials/header.php');
   include('partials/sidebar.php');
 
-  // Pagination logic
+
   $results_per_page = 10; // Number of results per page
   $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
   $start_from = ($page - 1) * $results_per_page;
 
-  // Get total number of records
   $sql_total = "SELECT COUNT(*) AS total FROM music";
   $result_total = $conn->query($sql_total);
   $total_records = $result_total->fetch_assoc()['total'];
   $total_pages = ceil($total_records / $results_per_page);
 
-  // Get records for the current page
   $sql = "SELECT * FROM music LIMIT $start_from, $results_per_page";
   $music = $conn->query($sql);
 
-  // Check if the query was successful
   if (!$music) {
     die("Query failed: " . $conn->error);
   }
