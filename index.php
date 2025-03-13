@@ -3,7 +3,19 @@
   include('partials/header.php');
   include('partials/sidebar.php');
 
-  $sql = "SELECT * FROM music";
+  // Pagination logic
+  $results_per_page = 10; // Number of results per page
+  $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+  $start_from = ($page - 1) * $results_per_page;
+
+  // Get total number of records
+  $sql_total = "SELECT COUNT(*) AS total FROM music";
+  $result_total = $conn->query($sql_total);
+  $total_records = $result_total->fetch_assoc()['total'];
+  $total_pages = ceil($total_records / $results_per_page);
+
+  // Get records for the current page
+  $sql = "SELECT * FROM music LIMIT $start_from, $results_per_page";
   $music = $conn->query($sql);
 
   // Check if the query was successful
@@ -134,11 +146,15 @@
           <div class="mx-4">
             <nav aria-label="Page navigation example">
               <ul class="pagination">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                <?php if ($page > 1): ?>
+                  <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page - 1; ?>">Previous</a></li>
+                <?php endif; ?>
+                <?php for ($i = 1; $i <= $total_pages; $i++): ?>
+                  <li class="page-item <?php if ($i == $page) echo 'active'; ?>"><a class="page-link" href="index.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                <?php endfor; ?>
+                <?php if ($page < $total_pages): ?>
+                  <li class="page-item"><a class="page-link" href="index.php?page=<?php echo $page + 1; ?>">Next</a></li>
+                <?php endif; ?>
               </ul>
             </nav>
           </div>
