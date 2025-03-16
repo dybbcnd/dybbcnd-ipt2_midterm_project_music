@@ -70,6 +70,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+
             <img src="assets/img/dave_profile.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">C.D. Conde</span>
           </a><!-- End Profile Iamge Icon -->
@@ -107,6 +108,7 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/eralyn_profile.jpg" alt="Profile" class="rounded-circle">
+
             <span class="d-none d-md-block dropdown-toggle ps-2">E. Forte</span>
           </a><!-- End Profile Iamge Icon -->
 
